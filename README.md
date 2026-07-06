@@ -413,17 +413,7 @@ It was selected because it:
 
 For these reasons, Logistic Regression was chosen as the **final deployment model** for the Streamlit web application, while the other trained models were retained for performance comparison and future experimentation.
 
-# 📊 Model Evaluation
 
-The trained models were evaluated using standard classification metrics such as:
-
-- Accuracy
-- Precision
-- Recall
-- F1 Score
-- Confusion Matrix
-
-A comparative analysis was performed to determine the best-performing algorithm.
 
 ---
 
@@ -511,17 +501,6 @@ base64
 
 ---
 
-# 📖 Interview Explanation
-
-If asked:
-
-**"Explain your project."**
-
-You can answer:
-
-> This project predicts the likelihood of heart disease using Machine Learning. First, I collected and cleaned the dataset by removing inconsistencies and replacing medically invalid values using KNN Imputation. Then I performed exploratory data analysis to understand feature relationships. I trained four classification algorithms—Logistic Regression, Support Vector Machine, Decision Tree, and Random Forest—and compared their performance using evaluation metrics like Accuracy, Precision, Recall, and F1 Score. After selecting the best-performing model, I deployed it using Streamlit. The application supports both single-patient prediction and batch prediction through CSV upload, and users can download prediction results directly.
-
----
 
 # 🎓 Learning Outcomes
 
