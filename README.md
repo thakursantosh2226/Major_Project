@@ -234,53 +234,184 @@ These visualizations help identify important relationships between features and 
 
 # 🤖 Machine Learning Models Used
 
-Four classification algorithms were trained.
+To determine the most suitable algorithm for heart disease prediction, four supervised Machine Learning classification models were trained and evaluated. Each model has its own strengths and limitations, so comparing multiple algorithms helped identify the one that performs best on this dataset.
 
-## 1. Logistic Regression
+The dataset was divided into **training** and **testing** sets. After preprocessing and feature engineering, each model was trained using the training data and evaluated on unseen testing data using standard classification metrics.
 
-A linear classification algorithm used as the baseline model.
+The following evaluation metrics were used:
 
-Advantages:
+- **Accuracy** – Overall percentage of correctly classified patients.
+- **Precision** – Measures how many patients predicted as having heart disease actually have the disease.
+- **Recall (Sensitivity)** – Measures how many actual heart disease patients are correctly identified.
+- **F1-Score** – Harmonic mean of Precision and Recall; useful when balancing false positives and false negatives.
+- **Matthews Correlation Coefficient (MCC)** – A robust evaluation metric for binary classification that considers all four outcomes (TP, TN, FP, FN). It is especially useful for evaluating medical prediction models.
 
-- Fast
+---
+
+## 1️⃣ Logistic Regression
+
+**Overview**
+
+Logistic Regression is one of the most popular algorithms for binary classification problems. It predicts the probability of a patient belonging to either the "Heart Disease" or "No Heart Disease" class using the logistic (sigmoid) function.
+
+### Why it was used
+
+- Fast and computationally efficient
 - Easy to interpret
-- Works well for binary classification
+- Works well on structured medical datasets
+- Provides a strong baseline for comparison
+
+### Advantages
+
+- Simple implementation
+- Less prone to overfitting
+- Easy to explain during interviews
+- Performs well when classes are linearly separable
+
+### Limitations
+
+- Cannot capture highly complex nonlinear relationships
+- Performance depends on feature relationships
+
+### Project Performance
+
+- **Accuracy:** **85.87%**
+- Achieved the **highest accuracy** among all tested models.
+- Also showed the best balance between Precision, Recall, and F1-Score, making it the most reliable model for this dataset.
+
+**Final Status:** ✅ **Selected as the Best Performing Model**
 
 ---
 
-## 2. Support Vector Machine (SVM)
+## 2️⃣ Support Vector Machine (SVM)
 
-Creates an optimal decision boundary to separate classes.
+**Overview**
 
-Advantages:
+Support Vector Machine classifies data by finding the optimal hyperplane that maximizes the separation (margin) between different classes.
 
-- High accuracy
-- Effective in high-dimensional datasets
+### Why it was used
+
+- Excellent classifier for medium-sized datasets
+- Handles high-dimensional data effectively
+- Often provides high classification accuracy
+
+### Advantages
+
+- Works well with complex decision boundaries
+- Robust against overfitting
+- Effective in binary classification tasks
+
+### Limitations
+
+- Computationally expensive for larger datasets
+- Requires careful parameter tuning
+- Less interpretable than Logistic Regression
+
+### Project Performance
+
+- Produced competitive prediction results.
+- Performed well across all evaluation metrics but remained slightly behind Logistic Regression.
+- Demonstrated good generalization capability.
+
+**Final Status:** ✔ Strong Alternative Model
 
 ---
 
-## 3. Decision Tree
+## 3️⃣ Decision Tree
 
-Uses tree-like decision rules.
+**Overview**
 
-Advantages:
+Decision Tree builds a flowchart-like tree structure where each node represents a decision based on a feature, eventually leading to a prediction.
+
+### Why it was used
 
 - Easy to visualize
-- Handles nonlinear relationships
+- Easy to explain to non-technical users
+- Captures nonlinear relationships
+
+### Advantages
+
+- Highly interpretable
+- Requires little data preprocessing
+- Can model complex feature interactions
+
+### Limitations
+
+- Prone to overfitting
+- Small data changes can produce different trees
+- Lower generalization compared to ensemble models
+
+### Project Performance
+
+- **Accuracy:** **80.98%**
+- Produced the lowest overall accuracy among the tested models.
+- Although easy to interpret, it was less effective than the other algorithms.
+
+**Final Status:** Suitable for understanding decision logic but not selected for deployment.
 
 ---
 
-## 4. Random Forest
+## 4️⃣ Random Forest
 
-An ensemble of multiple decision trees.
+**Overview**
 
-Advantages:
+Random Forest is an ensemble learning algorithm that combines the predictions of multiple Decision Trees to improve overall performance and reduce overfitting.
 
-- Higher accuracy
-- Reduces overfitting
-- Better generalization
+### Why it was used
+
+- Handles nonlinear relationships effectively
+- More robust than a single Decision Tree
+- Produces stable predictions
+
+### Advantages
+
+- High prediction accuracy
+- Resistant to overfitting
+- Works well with real-world datasets
+- Handles feature interactions automatically
+
+### Limitations
+
+- Larger model size
+- Higher computational cost
+- Less interpretable than Logistic Regression
+
+### Project Performance
+
+- **Accuracy:** **84.24%**
+- Improved significantly over the Decision Tree.
+- Delivered strong Precision, Recall, and F1-Score.
+- Performed consistently but slightly below Logistic Regression.
+
+**Final Status:** ✔ Second Best Performing Model
 
 ---
+
+# 📊 Model Comparison
+
+| Model | Accuracy | Overall Performance |
+|-------|---------:|---------------------|
+| **Logistic Regression** | **85.87%** | 🥇 Best |
+| Random Forest | 84.24% | 🥈 Second Best |
+| Support Vector Machine | Comparable to Random Forest | 🥉 Good |
+| Decision Tree | 80.98% | Fourth |
+
+---
+
+# 🏆 Why Logistic Regression Was Selected
+
+Although all four algorithms were capable of predicting heart disease, **Logistic Regression** achieved the best overall balance across the evaluation metrics.
+
+It was selected because it:
+
+- ✅ Achieved the **highest testing accuracy (85.87%)**
+- ✅ Maintained a strong balance between **Precision**, **Recall**, and **F1-Score**
+- ✅ Produced reliable predictions without overfitting
+- ✅ Is computationally efficient and fast during inference
+- ✅ Is highly interpretable, making it suitable for medical decision-support applications
+- ✅ Generates probability scores that help explain prediction confidence
+
+For these reasons, Logistic Regression was chosen as the **final deployment model** for the Streamlit web application, while the other trained models were retained for performance comparison and future experimentation.
 
 # 📊 Model Evaluation
 
@@ -322,35 +453,7 @@ After prediction, users can download the results as a CSV file.
 
 ---
 
-# 🚀 How to Run the Project
 
-## Step 1
-
-Clone the repository
-
-```bash
-git clone https://github.com/yourusername/Heart-Disease-Prediction.git
-```
-
----
-
-## Step 2
-
-Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
----
-
-## Step 3
-
-Run the application
-
-```bash
-streamlit run app.py
-```
 
 ---
 
@@ -451,7 +554,7 @@ Through this project I learned:
 
 # 👨‍💻 Author
 
-**Raja**
+**Santosh Kumar and Others**
 
 Bachelor of Technology (B.Tech)
 
